@@ -38,6 +38,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name="harryguo.voicecmd.activity.setting.OfflineSetting"
+            android:configChanges="orientation|keyboardHidden|screenLayout"
+            android:label="离线命令词设置"
+            android:theme="@android:style/Theme.DeviceDefault.Light"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

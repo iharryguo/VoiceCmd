@@ -2,6 +2,21 @@ package harryguo.voicecmd.recognization;
 
 import android.os.Handler;
 import android.os.Message;
+import android.text.TextUtils;
+import android.util.Log;
+
+import com.google.gson.Gson;
+
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
 
 /**
  * Created by fujiayi on 2017/6/16.
@@ -56,6 +71,47 @@ public class MessageStatusRecogListener extends StatusRecogListener {
         }
         speechEndTime = 0;
         sendMessage(message, status, true);
+
+        searchKey(results[0]);
+    }
+
+    private void searchKey(String result) {
+        if (!TextUtils.isEmpty(result)) {
+            String url = "https://www.baidu.com/s?wd=";
+            try {
+                url = url + URLEncoder.encode(result, "utf8");
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+                return;
+            }
+
+            OkHttpClient client = new OkHttpClient();
+            Request request = new Request.Builder().url(url)
+                    .addHeader("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8")
+                    // .addHeader("Accept-Encoding", "gzip, deflate, br") // 不能有Accept-Encoding。否则okhttp就不会帮我自动解压gzip了
+                    .addHeader("Accept-Language", "zh-CN,zh;q=0.9")
+                    .addHeader("User-Agent", "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Mobile Safari/537.36")
+                    .addHeader("Upgrade-Insecure-Requests", "1")
+                    .build();
+            client.newCall(request).enqueue(new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    if (response.isSuccessful()) {
+                        // byte[] b = response.body().bytes(); //获取数据的bytes
+                        // String result = new String(b, "GB2312"); //然后将其转为gb2312
+                        String result = response.body().string();
+                        if (result != null)
+                        {
+                            Log.d("test", "result is:" + result);
+                        }
+                    }
+                }
+            });
+        }
     }
 
     @Override

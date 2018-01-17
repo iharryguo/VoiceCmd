@@ -46,7 +46,6 @@ public abstract class ActivityCommon extends Activity {
         // setStrictMode();
         InFileStream.setContext(this);
         setContentView(layout);
-        initView();
         handler = new Handler() {
 
             /*
@@ -62,6 +61,7 @@ public abstract class ActivityCommon extends Activity {
         Logger.setHandler(handler);
         initPermission();
         initRecog();
+        initView();
     }
 
 
@@ -90,7 +90,6 @@ public abstract class ActivityCommon extends Activity {
                 }
             });
         }
-
     }
 
     /**

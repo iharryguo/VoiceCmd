@@ -124,7 +124,6 @@ public abstract class ActivityRecog extends ActivityCommon implements IStatus {
     protected void initView() {
         super.initView();
         btn.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 switch (status) {
@@ -152,9 +151,10 @@ public abstract class ActivityRecog extends ActivityCommon implements IStatus {
                     default:
                         break;
                 }
-
             }
         });
+
+        btn.callOnClick();
     }
 
     protected void handleMsg(Message msg) {

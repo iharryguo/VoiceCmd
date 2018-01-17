@@ -2,8 +2,10 @@ package harryguo.voicecmd.activity;
 
 import android.os.Bundle;
 
+import harryguo.voicecmd.activity.setting.NluSetting;
 import harryguo.voicecmd.activity.setting.OfflineSetting;
 import harryguo.voicecmd.recognization.CommonRecogParams;
+import harryguo.voicecmd.recognization.nlu.NluRecogParams;
 import harryguo.voicecmd.recognization.offline.OfflineRecogParams;
 
 public class MainActivity extends ActivityRecog {
@@ -15,12 +17,14 @@ public class MainActivity extends ActivityRecog {
 
     public MainActivity() {
         super();
-        settingActivityClass = OfflineSetting.class;
+        // settingActivityClass = OfflineSetting.class;
+        settingActivityClass = NluSetting.class;
     }
 
     @Override
     protected CommonRecogParams getApiParams() {
-        return new OfflineRecogParams(this);
+        // return new OfflineRecogParams(this);
+        return new NluRecogParams(this);
     }
 
     @Override
