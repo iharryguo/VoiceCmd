@@ -19,13 +19,13 @@
         <!-- 正式发布时，请替换成您自己的appId 本demo的appId会不定时下线 -->
         <meta-data
             android:name="com.baidu.speech.APP_ID"
-            android:value="5966748" />
+            android:value="10715149" />
         <meta-data
             android:name="com.baidu.speech.API_KEY"
-            android:value="BU8tykliior63LzHjeKMDfNh" />
+            android:value="rDEcNxZs0mGIXiPYnVg1Apfg" />
         <meta-data
             android:name="com.baidu.speech.SECRET_KEY"
-            android:value="oR3BrX6TEREF8LbgWoMqxVfCNRqyGu9O" />
+            android:value="058ee8771585ae0da967f5ea49f6d015" />
 
         <service
             android:name="com.baidu.speech.VoiceRecognitionService"
@@ -34,15 +34,28 @@
         <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
+
+                <category android:name="com.baidu.speech.recognizerdemo.intent.category.SAMPLE_CODE" />
             </intent-filter>
         </activity>
 
         <activity
+            android:name="harryguo.voicecmd.activity.setting.OnlineSetting"
+            android:configChanges="orientation|keyboardHidden|screenLayout"
+            android:label="在线识别设置"
+            android:theme="@android:style/Theme.DeviceDefault.Light"
+            android:screenOrientation="portrait"></activity>
+        <activity
             android:name="harryguo.voicecmd.activity.setting.OfflineSetting"
             android:configChanges="orientation|keyboardHidden|screenLayout"
             android:label="离线命令词设置"
+            android:theme="@android:style/Theme.DeviceDefault.Light"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="harryguo.voicecmd.activity.setting.NluSetting"
+            android:configChanges="orientation|keyboardHidden|screenLayout"
+            android:label="语义设置"
             android:theme="@android:style/Theme.DeviceDefault.Light"
             android:screenOrientation="portrait"></activity>
     </application>
