@@ -1,0 +1,30 @@
+{
+    "version": "1.0.0",
+    "warning": "请不要修改这个文件中的内容",
+    "project": {
+        "projectId": 102096
+    },
+    "application": {
+        "appId": 101901,
+        "packageId": "harryguo.voicecmd"
+    },
+    "services": {
+        "analytics": {
+            "appKey": "Aqcloud101901"
+        },
+        "messaging": {
+            "appId": "2100294590",
+            "appKey": "AA2373UTBG9T"
+        },
+        "crash": {
+            "appId": "57f6985061"
+        },
+        "payment": {
+            "offerId": "TC101901"
+        },
+        "storage": {
+            "bucket": "tac-pj-id-harryguo1-st-1251963496",
+            "region": "ap-chengdu"
+        }
+    }
+}

@@ -20,3 +20,19 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 -keep class com.baidu.speech.**{*;}
+
+# MobileLine Core
+
+-keep class com.tencent.qcloud.core.** { *;}
+-keep class bolts.** { *;}
+-keep class com.tencent.tac.** { *;}
+-keep class com.tencent.stat.*{*;}
+-keep class com.tencent.mid.*{*;}
+-dontwarn okhttp3.**
+-dontwarn okio.**
+-dontwarn javax.annotation.**
+-dontwarn org.conscrypt.**
+
+# MobileLine Crash
+
+-keep class com.tencent.bugly.** { *;}
